@@ -26,6 +26,8 @@ const CustomContainer = ({
   return (
     <LinearGradient
       colors={variant === 'yellow' ? COLORS.yellowGradient : COLORS.redGradient}
+      start={{ x: 0.56, y: 0 }}
+      end={{ x: 0.44, y: 1 }}
       style={[styles.container, extraStyle, variantStyles[variant]]}
     >
       {children}

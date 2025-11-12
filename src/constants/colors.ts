@@ -7,14 +7,22 @@ export const COLORS = {
   borderColor: '#FFF11C',
 
   yellowGradient: [
-    '#967300',
-    '#cea100',
+    '#ffd217',
+    '#fff11c',
+    '#FFFFF0',
+    '#ffffc9',
+    '#ffff6a',
+    '#fff11c',
+    '#ffd217',
+  ],
+  yellowTextGradient: [
+    '#ffd217',
     '#fff11c',
     '#ffffc9',
-    '#ffff6d',
-    '#ffff6a',
-    '#dfb90e',
-    '#daae00',
+    '#ffffc9',
+    '#ffd217',
+    '#fff11c',
   ],
+
   redGradient: ['#7c0627', '#ffffff', '#170206'],
 };
