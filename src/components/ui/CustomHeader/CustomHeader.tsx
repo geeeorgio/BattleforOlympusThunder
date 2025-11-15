@@ -16,7 +16,12 @@ const CustomHeader = (props: NativeStackHeaderProps) => {
 
   return (
     <View style={styles.container}>
-      <CustomContainer variant="red">
+      <CustomContainer
+        variant="red"
+        extraStyle={styles.backButtonContainer}
+        start={{ x: 0, y: 0.5 }}
+        end={{ x: 1, y: 0.5 }}
+      >
         <CustomButton
           extraStyle={styles.backButton}
           handlePress={() => navigation.goBack()}
@@ -29,7 +34,12 @@ const CustomHeader = (props: NativeStackHeaderProps) => {
         </CustomButton>
       </CustomContainer>
 
-      <CustomContainer variant="red" extraStyle={styles.contentContainer}>
+      <CustomContainer
+        variant="red"
+        extraStyle={styles.contentContainer}
+        start={{ x: 0, y: 0.5 }}
+        end={{ x: 1, y: 0.5 }}
+      >
         <CustomText extraStyle={styles.title}>{title}</CustomText>
       </CustomContainer>
     </View>

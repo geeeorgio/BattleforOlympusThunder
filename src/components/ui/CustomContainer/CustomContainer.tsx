@@ -11,6 +11,8 @@ interface CustomContainerProps {
   extraStyle?: StyleProp<ViewStyle>;
   variant: 'yellow' | 'red';
   children?: ReactNode;
+  start?: { x: number; y: number };
+  end?: { x: number; y: number };
 }
 
 const variantStyles = {
@@ -22,12 +24,14 @@ const CustomContainer = ({
   extraStyle,
   variant,
   children,
+  start,
+  end,
 }: CustomContainerProps) => {
   return (
     <LinearGradient
       colors={variant === 'yellow' ? COLORS.yellowGradient : COLORS.redGradient}
-      start={{ x: 0.56, y: 0 }}
-      end={{ x: 0.44, y: 1 }}
+      start={start || { x: 0.56, y: 0 }}
+      end={end || { x: 0.44, y: 1 }}
       style={[styles.container, extraStyle, variantStyles[variant]]}
     >
       {children}

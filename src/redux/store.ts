@@ -11,6 +11,7 @@ import {
   PERSIST,
 } from 'redux-persist';
 
+import { gameplayReducer } from './slices/gameplay/slice';
 import { onboardingReducer } from './slices/onboarding/slice';
 
 const onboardingPersistConfig = {
@@ -26,6 +27,7 @@ const persistedReducer = persistReducer(
 const store = configureStore({
   reducer: {
     onboarding: persistedReducer,
+    gameplay: gameplayReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
