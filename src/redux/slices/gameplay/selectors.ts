@@ -64,3 +64,19 @@ export const selectWinner = (state: RootState) => {
 export const selectIsAlertModalVisible = (state: RootState) => {
   return state.gameplay.isAlertModalVisible;
 };
+
+export const selectPlayer1BoltsRemaining = (state: RootState) => {
+  return state.gameplay.player1BoltsRemaining;
+};
+
+export const selectPlayer2BoltsRemaining = (state: RootState) => {
+  return state.gameplay.player2BoltsRemaining;
+};
+
+export const selectPlayer1ConsecutiveHits = (state: RootState) => {
+  return state.gameplay.player1ConsecutiveHits;
+};
+
+export const selectPlayer2ConsecutiveHits = (state: RootState) => {
+  return state.gameplay.player2ConsecutiveHits;
+};

@@ -22,6 +22,8 @@ interface GameplayState {
   player2BoltsRemaining: number;
   winner: 'player_1' | 'player_2' | null;
   isAlertModalVisible: boolean;
+  player1ConsecutiveHits: number;
+  player2ConsecutiveHits: number;
 }
 
 const initialState: GameplayState = {
@@ -45,6 +47,8 @@ const initialState: GameplayState = {
   player2BoltsRemaining: 4,
   winner: null,
   isAlertModalVisible: false,
+  player1ConsecutiveHits: 0,
+  player2ConsecutiveHits: 0,
 };
 
 const slice = createSlice({
@@ -123,6 +127,13 @@ const slice = createSlice({
         ? 'player2BoltsRemaining'
         : 'player1BoltsRemaining';
 
+      const currentHitsKey = isPlayer1Turn
+        ? 'player1ConsecutiveHits'
+        : 'player2ConsecutiveHits';
+      const opponentHitsKey = isPlayer1Turn
+        ? 'player2ConsecutiveHits'
+        : 'player1ConsecutiveHits';
+
       const cell = targetGrid.find((c) => c.id === cellId);
 
       if (!cell || cell.isHit || cell.isMiss) {
@@ -133,12 +144,17 @@ const slice = createSlice({
         cell.isHit = true;
         state[targetPlayerBolts] -= 1;
 
+        state[currentHitsKey] += 1;
+        state[opponentHitsKey] = 0;
+
         if (state[targetPlayerBolts] === 0) {
           state.winner = state.currentPlayer;
           state.isSetupComplete = false;
         }
       } else {
         cell.isMiss = true;
+
+        state[currentHitsKey] = 0;
 
         state.currentPlayer = isPlayer1Turn ? 'player_2' : 'player_1';
       }

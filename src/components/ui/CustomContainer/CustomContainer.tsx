@@ -9,7 +9,7 @@ import { COLORS } from 'src/constants';
 
 interface CustomContainerProps {
   extraStyle?: StyleProp<ViewStyle>;
-  variant: 'yellow' | 'red';
+  variant: 'yellow' | 'red' | 'grey';
   children?: ReactNode;
   start?: { x: number; y: number };
   end?: { x: number; y: number };
@@ -18,6 +18,7 @@ interface CustomContainerProps {
 const variantStyles = {
   yellow: styles.yellow,
   red: styles.red,
+  grey: styles.grey,
 };
 
 const CustomContainer = ({
@@ -29,7 +30,15 @@ const CustomContainer = ({
 }: CustomContainerProps) => {
   return (
     <LinearGradient
-      colors={variant === 'yellow' ? COLORS.yellowGradient : COLORS.redGradient}
+      colors={
+        variant === 'yellow'
+          ? COLORS.yellowGradient
+          : variant === 'red'
+            ? COLORS.redGradient
+            : variant === 'grey'
+              ? COLORS.greyGradient
+              : []
+      }
       start={start || { x: 0.56, y: 0 }}
       end={end || { x: 0.44, y: 1 }}
       style={[styles.container, extraStyle, variantStyles[variant]]}

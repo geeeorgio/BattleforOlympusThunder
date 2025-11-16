@@ -11,7 +11,9 @@ import {
   PERSIST,
 } from 'redux-persist';
 
+import { achievementsReducer } from './slices/achievements/slice';
 import { gameplayReducer } from './slices/gameplay/slice';
+import { leaderboardReducer } from './slices/leaderboard/slice';
 import { onboardingReducer } from './slices/onboarding/slice';
 
 const onboardingPersistConfig = {
@@ -24,10 +26,32 @@ const persistedReducer = persistReducer(
   onboardingReducer,
 );
 
+const leaderboardPersistConfig = {
+  key: 'leaderboard',
+  storage: AsyncStorage,
+};
+
+const persistedLeaderboardReducer = persistReducer(
+  leaderboardPersistConfig,
+  leaderboardReducer,
+);
+
+const achievementsPersistConfig = {
+  key: 'achievements',
+  storage: AsyncStorage,
+};
+
+const persistedAchievementsReducer = persistReducer(
+  achievementsPersistConfig,
+  achievementsReducer,
+);
+
 const store = configureStore({
   reducer: {
     onboarding: persistedReducer,
     gameplay: gameplayReducer,
+    leaderboard: persistedLeaderboardReducer,
+    achievements: persistedAchievementsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

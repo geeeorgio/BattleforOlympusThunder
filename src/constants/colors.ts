@@ -24,5 +24,7 @@ export const COLORS = {
     '#fff11c',
   ],
 
+  greyGradient: ['#939393', '#333333'],
+
   redGradient: ['#170206', '#7c0627', '#7c0627', '#170206'],
 };

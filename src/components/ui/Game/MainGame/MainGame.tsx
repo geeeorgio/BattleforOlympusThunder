@@ -9,6 +9,8 @@ import { styles } from './styles';
 
 import { ARROW_DOWN, ARROW_UP } from 'src/constants';
 import { useAppDispatch, useAppSelector } from 'src/hooks/toolkit';
+import { selectIsFirstStrikeMade } from 'src/redux/slices/achievements/selectors';
+import { setFirstStrike } from 'src/redux/slices/achievements/slice';
 import {
   selectCurrentPlayer,
   selectPlayer1,
@@ -29,6 +31,22 @@ const MainGame = ({ isMainGame = false }: MainGameProps) => {
   const currentPlayer = useAppSelector(selectCurrentPlayer);
   const player1Grid = useAppSelector(selectPlayer1Grid);
   const player2Grid = useAppSelector(selectPlayer2Grid);
+  const isFirstStrikeMade = useAppSelector(selectIsFirstStrikeMade);
+
+  const handleAttack = (
+    cellId: string,
+    attackingPlayerId: 'player_1' | 'player_2',
+  ) => {
+    const targetGrid =
+      attackingPlayerId === 'player_1' ? player2Grid : player1Grid;
+    const cell = targetGrid.find((c) => c.id === cellId);
+
+    if (cell?.hasLightning && !isFirstStrikeMade) {
+      dispatch(setFirstStrike(attackingPlayerId));
+    }
+
+    dispatch(attackCell(cellId));
+  };
 
   const handleGrid1Press = (cellId: string) => {
     if (currentPlayer.id === 'player_1') {
@@ -36,7 +54,7 @@ const MainGame = ({ isMainGame = false }: MainGameProps) => {
       return;
     }
 
-    dispatch(attackCell(cellId));
+    handleAttack(cellId, 'player_2');
   };
 
   const handleGrid2Press = (cellId: string) => {
@@ -45,7 +63,7 @@ const MainGame = ({ isMainGame = false }: MainGameProps) => {
       return;
     }
 
-    dispatch(attackCell(cellId));
+    handleAttack(cellId, 'player_1');
   };
 
   return (

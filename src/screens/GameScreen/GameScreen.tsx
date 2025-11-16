@@ -20,6 +20,7 @@ import {
   selectIsQuitModalVisible,
   selectPlayer1Name,
   selectPlayer2Name,
+  selectWinner,
 } from 'src/redux/slices/gameplay/selectors';
 import {
   hideQuitModal,
@@ -28,6 +29,7 @@ import {
   setPlayer2Name,
   showQuitModal,
 } from 'src/redux/slices/gameplay/slice';
+import { addVictory } from 'src/redux/slices/leaderboard/slice';
 import type { MainStackNavigationProp } from 'src/types';
 
 const GameScreen = () => {
@@ -37,7 +39,7 @@ const GameScreen = () => {
   const player1Name = useAppSelector(selectPlayer1Name);
   const player2Name = useAppSelector(selectPlayer2Name);
   const currentPlayer = useAppSelector(selectCurrentPlayer);
-
+  const winner = useAppSelector(selectWinner);
   const isQuitModalVisible = useAppSelector(selectIsQuitModalVisible);
   const [showGameplay, setShowGameplay] = useState<boolean>(false);
 
@@ -54,8 +56,14 @@ const GameScreen = () => {
   };
 
   const handleExitConfirm = () => {
-    dispatch(hideQuitModal());
+    if (winner) {
+      dispatch(addVictory(winner.name));
+    }
+
     dispatch(resetGameplay());
+
+    dispatch(hideQuitModal());
+
     navigation.navigate('HomeScreen');
   };
 

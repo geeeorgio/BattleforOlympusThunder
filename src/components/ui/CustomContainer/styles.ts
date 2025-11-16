@@ -11,4 +11,5 @@ export const styles = StyleSheet.create({
   },
   yellow: { borderColor: 'transparent', borderWidth: 0 },
   red: { borderColor: COLORS.borderColor, borderWidth: wp(2) },
+  grey: { borderColor: COLORS.grey, borderWidth: wp(0) },
 });

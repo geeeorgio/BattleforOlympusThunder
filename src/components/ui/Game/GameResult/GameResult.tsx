@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
+import { useEffect } from 'react';
 import { Image, View } from 'react-native';
 
 import CustomButton from '../../CustomButton/CustomButton';
@@ -11,8 +12,20 @@ import GradientText from '../../GradientText/GradientText';
 import { styles } from './styles';
 
 import { ZEUS_IMGS } from 'src/constants';
-import { useAppDispatch } from 'src/hooks/toolkit';
+import { useAppDispatch, useAppSelector } from 'src/hooks/toolkit';
+import { selectFirstStrikePlayerId } from 'src/redux/slices/achievements/selectors';
+import {
+  claimAchievement,
+  incrementProgress,
+} from 'src/redux/slices/achievements/slice';
+import {
+  selectPlayer1BoltsRemaining,
+  selectPlayer2BoltsRemaining,
+  selectPlayer1ConsecutiveHits,
+  selectPlayer2ConsecutiveHits,
+} from 'src/redux/slices/gameplay/selectors';
 import { resetGameplay, type Player } from 'src/redux/slices/gameplay/slice';
+import { addVictory } from 'src/redux/slices/leaderboard/slice';
 import type { MainStackNavigationProp } from 'src/types';
 import { handleShare } from 'src/utils';
 
@@ -24,11 +37,42 @@ const GameResult = ({ winner }: GameResultProps) => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation<MainStackNavigationProp>();
 
+  const p1Bolts = useAppSelector(selectPlayer1BoltsRemaining);
+  const p2Bolts = useAppSelector(selectPlayer2BoltsRemaining);
+  const p1Hits = useAppSelector(selectPlayer1ConsecutiveHits);
+  const p2Hits = useAppSelector(selectPlayer2ConsecutiveHits);
+  const firstStrikePlayerId = useAppSelector(selectFirstStrikePlayerId);
+
+  useEffect(() => {
+    if (!winner) return;
+
+    const winningPlayerId = winner.id as 'player_1' | 'player_2';
+
+    dispatch(incrementProgress('friendly_thunder'));
+
+    const winningPlayerBolts =
+      winningPlayerId === 'player_1' ? p1Bolts : p2Bolts;
+    if (winningPlayerBolts === 4) {
+      dispatch(claimAchievement('perfect_storm'));
+    }
+
+    const winningPlayerConsecutiveHits =
+      winningPlayerId === 'player_1' ? p1Hits : p2Hits;
+    if (winningPlayerConsecutiveHits >= 2) {
+      dispatch(claimAchievement('mind_reader'));
+    }
+
+    if (firstStrikePlayerId === winningPlayerId) {
+      dispatch(claimAchievement('first_strike'));
+    }
+  }, [winner, dispatch, p1Bolts, p2Bolts, p1Hits, p2Hits, firstStrikePlayerId]);
+
   const shareResult = () => {
     handleShare();
   };
 
   const handleHome = () => {
+    dispatch(addVictory(winner.name));
     dispatch(resetGameplay());
     navigation.navigate('HomeScreen');
   };

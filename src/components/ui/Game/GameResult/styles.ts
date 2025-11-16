@@ -6,12 +6,12 @@ import { hp, sp, wp } from 'src/utils';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   content: {
-    width: '100%',
-    aspectRatio: 1.4,
+    width: '80%',
+    aspectRatio: 1.2,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -21,13 +21,13 @@ export const styles = StyleSheet.create({
   },
   textContainer: {
     width: '100%',
-    marginBottom: hp(20),
+    marginBottom: hp(16),
   },
   title: {
     fontSize: sp(22),
     fontFamily: FONTS.UbuntuMedium,
     textAlign: 'center',
-    marginBottom: hp(30),
+    marginBottom: hp(16),
   },
   description: {
     fontSize: sp(15),
@@ -43,26 +43,28 @@ export const styles = StyleSheet.create({
   },
   button: {
     width: '100%',
-    paddingVertical: wp(16),
-    paddingHorizontal: wp(70),
+    paddingVertical: wp(10),
+    paddingHorizontal: wp(66),
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonText: {
-    fontSize: sp(20),
+    fontSize: sp(18),
     fontFamily: FONTS.UbuntuMedium,
     color: COLORS.black,
+    textAlign: 'center',
   },
   homebutton: {
     width: '100%',
-    paddingVertical: wp(16),
+    paddingVertical: wp(10),
     paddingHorizontal: wp(50),
     justifyContent: 'center',
     alignItems: 'center',
   },
   homeText: {
-    fontSize: sp(18),
+    fontSize: sp(16),
     fontFamily: FONTS.UbuntuMedium,
     color: COLORS.white,
+    textAlign: 'center',
   },
 });
