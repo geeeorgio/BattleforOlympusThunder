@@ -5,6 +5,7 @@ import { View } from 'react-native';
 import { styles } from './styles';
 
 import {
+  AlertModal,
   CustomContainer,
   CustomScreenWrapper,
   CustomText,
@@ -117,6 +118,8 @@ const GameScreen = () => {
         onConfirm={handleExitConfirm}
         onCancel={handleExitCancel}
       />
+
+      <AlertModal />
     </CustomScreenWrapper>
   );
 };

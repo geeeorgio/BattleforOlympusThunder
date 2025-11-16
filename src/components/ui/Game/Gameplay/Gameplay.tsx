@@ -3,6 +3,7 @@ import { View } from 'react-native';
 
 import Buttons from '../Buttons/Buttons';
 import FieldSetup from '../FieldSetup/FieldSetup';
+import GameResult from '../GameResult/GameResult';
 import MainGame from '../MainGame/MainGame';
 import PlayerGreeting from '../PlayerGreeting/PlayerGreeting';
 
@@ -13,6 +14,7 @@ import {
   selectCurrentPlayerGrid,
   selectIsSetupComplete,
   selectLightningCount,
+  selectWinner,
 } from 'src/redux/slices/gameplay/selectors';
 import type { Player } from 'src/redux/slices/gameplay/slice';
 import {
@@ -33,6 +35,8 @@ const Gameplay = ({ currentPlayer }: GameplayProps) => {
   const lightningCount = useAppSelector(selectLightningCount);
 
   const isSetupComplete = useAppSelector(selectIsSetupComplete);
+
+  const winner = useAppSelector(selectWinner);
 
   const showStartButton = currentPlayer.id === 'player_2';
 
@@ -58,9 +62,11 @@ const Gameplay = ({ currentPlayer }: GameplayProps) => {
 
   return (
     <View style={styles.container}>
-      {isSetupComplete ? (
-        <MainGame />
-      ) : (
+      {winner && <GameResult winner={winner} />}
+
+      {isSetupComplete && !winner && <MainGame isMainGame={isSetupComplete} />}
+
+      {!winner && !isSetupComplete && (
         <>
           <PlayerGreeting
             playerImage={currentPlayer.image}

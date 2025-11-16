@@ -18,4 +18,11 @@ export const styles = StyleSheet.create({
     width: '80%',
     height: '80%',
   },
+  missMarker: {
+    width: '50%',
+    height: '50%',
+  },
+  hitMarker: {
+    backgroundColor: COLORS.green,
+  },
 });

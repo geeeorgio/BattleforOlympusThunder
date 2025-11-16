@@ -3,7 +3,7 @@ export const COLORS = {
   black: '#000000',
   grey: '#939393',
   yellow: '#FFF11C',
-  green: '1ECA07',
+  green: '#1ECA07',
   borderColor: '#FFF11C',
 
   yellowGradient: [

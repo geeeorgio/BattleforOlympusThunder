@@ -1,15 +1,19 @@
 import { StyleSheet } from 'react-native';
 
-import { FONTS } from 'src/constants';
-import { COLORS } from 'src/constants/colors';
-import { hp, sp, wp } from 'src/utils/scaling';
+import { COLORS, FONTS } from 'src/constants';
+import { hp, sp, wp } from 'src/utils';
 
 export const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  dialogWrapper: {
+    gap: wp(16),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   dialog: {
     width: '80%',
@@ -17,9 +21,6 @@ export const styles = StyleSheet.create({
     gap: hp(10),
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  dialogWrapper: {
-    gap: wp(16),
   },
   title: {
     fontSize: sp(20),
@@ -32,23 +33,19 @@ export const styles = StyleSheet.create({
     color: COLORS.white,
     textAlign: 'center',
   },
-  buttonsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
+  container: {
+    width: '100%',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   button: {
     width: '100%',
-    paddingVertical: hp(15),
-    paddingHorizontal: wp(30),
+    padding: wp(18),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  confirmText: {
-    fontSize: sp(16),
-    fontFamily: FONTS.UbuntuMedium,
-    color: COLORS.white,
-  },
-  cancelText: {
-    fontSize: sp(16),
+  buttonText: {
+    fontSize: sp(18),
     fontFamily: FONTS.UbuntuMedium,
     color: COLORS.black,
   },

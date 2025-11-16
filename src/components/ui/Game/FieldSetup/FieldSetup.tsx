@@ -11,9 +11,14 @@ import type { Cell } from 'src/utils';
 interface FieldSetupProps {
   currentPlayerGrid: Cell[];
   onCellPress: (cellId: string) => void;
+  isMainGame?: boolean;
 }
 
-const FieldSetup = ({ currentPlayerGrid, onCellPress }: FieldSetupProps) => {
+const FieldSetup = ({
+  currentPlayerGrid,
+  onCellPress,
+  isMainGame = false,
+}: FieldSetupProps) => {
   return (
     <CustomContainer
       variant="red"
@@ -25,7 +30,11 @@ const FieldSetup = ({ currentPlayerGrid, onCellPress }: FieldSetupProps) => {
         data={currentPlayerGrid}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <GameField cell={item} onCellPress={onCellPress} />
+          <GameField
+            cell={item}
+            onCellPress={onCellPress}
+            isMainGame={isMainGame}
+          />
         )}
         numColumns={5}
         scrollEnabled={false}

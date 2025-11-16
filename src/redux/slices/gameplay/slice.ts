@@ -18,6 +18,10 @@ interface GameplayState {
   lightningCount: number;
   isSetupComplete: boolean;
   isQuitModalVisible: boolean;
+  player1BoltsRemaining: number;
+  player2BoltsRemaining: number;
+  winner: 'player_1' | 'player_2' | null;
+  isAlertModalVisible: boolean;
 }
 
 const initialState: GameplayState = {
@@ -37,6 +41,10 @@ const initialState: GameplayState = {
   lightningCount: 4,
   isSetupComplete: false,
   isQuitModalVisible: false,
+  player1BoltsRemaining: 4,
+  player2BoltsRemaining: 4,
+  winner: null,
+  isAlertModalVisible: false,
 };
 
 const slice = createSlice({
@@ -88,16 +96,11 @@ const slice = createSlice({
     },
     switchSetupPlayer: (state) => {
       if (state.currentPlayer === 'player_1') {
-        console.log('switchSetupPlayerRedux player 1', state.currentPlayer);
         state.currentPlayer = 'player_2';
-        console.log('switchSetupPlayerRedux after switch', state.currentPlayer);
+
         state.lightningCount = 4;
       } else {
         state.isSetupComplete = true;
-        console.log(
-          'switchSetupPlayerRedux after complete',
-          state.isSetupComplete,
-        );
       }
     },
     completeSetup: (state) => {
@@ -108,6 +111,43 @@ const slice = createSlice({
     },
     hideQuitModal: (state) => {
       state.isQuitModalVisible = false;
+    },
+    attackCell: (state, action) => {
+      const cellId = action.payload;
+
+      const isPlayer1Turn = state.currentPlayer === 'player_1';
+
+      const targetGrid = isPlayer1Turn ? state.player2Grid : state.player1Grid;
+
+      const targetPlayerBolts = isPlayer1Turn
+        ? 'player2BoltsRemaining'
+        : 'player1BoltsRemaining';
+
+      const cell = targetGrid.find((c) => c.id === cellId);
+
+      if (!cell || cell.isHit || cell.isMiss) {
+        return;
+      }
+
+      if (cell.hasLightning) {
+        cell.isHit = true;
+        state[targetPlayerBolts] -= 1;
+
+        if (state[targetPlayerBolts] === 0) {
+          state.winner = state.currentPlayer;
+          state.isSetupComplete = false;
+        }
+      } else {
+        cell.isMiss = true;
+
+        state.currentPlayer = isPlayer1Turn ? 'player_2' : 'player_1';
+      }
+    },
+    showAlertModal: (state) => {
+      state.isAlertModalVisible = true;
+    },
+    hideAlertModal: (state) => {
+      state.isAlertModalVisible = false;
     },
     resetGameplay: () => {
       return { ...initialState };
@@ -125,6 +165,9 @@ export const {
   decreaseLightningCount,
   showQuitModal,
   hideQuitModal,
+  attackCell,
+  showAlertModal,
+  hideAlertModal,
 } = slice.actions;
 
 export const gameplayReducer = slice.reducer;
