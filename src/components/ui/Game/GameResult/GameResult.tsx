@@ -1,6 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Image, View } from 'react-native';
 
 import CustomButton from '../../CustomButton/CustomButton';
@@ -17,6 +16,7 @@ import { selectFirstStrikePlayerId } from 'src/redux/slices/achievements/selecto
 import {
   claimAchievement,
   incrementProgress,
+  resetFirstStrike,
 } from 'src/redux/slices/achievements/slice';
 import {
   selectPlayer1BoltsRemaining,
@@ -36,6 +36,7 @@ interface GameResultProps {
 const GameResult = ({ winner }: GameResultProps) => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation<MainStackNavigationProp>();
+  const achievementsCheckedRef = useRef(false);
 
   const p1Bolts = useAppSelector(selectPlayer1BoltsRemaining);
   const p2Bolts = useAppSelector(selectPlayer2BoltsRemaining);
@@ -44,7 +45,8 @@ const GameResult = ({ winner }: GameResultProps) => {
   const firstStrikePlayerId = useAppSelector(selectFirstStrikePlayerId);
 
   useEffect(() => {
-    if (!winner) return;
+    if (!winner || achievementsCheckedRef.current || !navigation.isFocused())
+      return;
 
     const winningPlayerId = winner.id as 'player_1' | 'player_2';
 
@@ -65,7 +67,18 @@ const GameResult = ({ winner }: GameResultProps) => {
     if (firstStrikePlayerId === winningPlayerId) {
       dispatch(claimAchievement('first_strike'));
     }
-  }, [winner, dispatch, p1Bolts, p2Bolts, p1Hits, p2Hits, firstStrikePlayerId]);
+
+    achievementsCheckedRef.current = true;
+  }, [
+    winner,
+    dispatch,
+    p1Bolts,
+    p2Bolts,
+    p1Hits,
+    p2Hits,
+    firstStrikePlayerId,
+    navigation,
+  ]);
 
   const shareResult = () => {
     handleShare();
@@ -74,6 +87,8 @@ const GameResult = ({ winner }: GameResultProps) => {
   const handleHome = () => {
     dispatch(addVictory(winner.name));
     dispatch(resetGameplay());
+
+    dispatch(resetFirstStrike());
     navigation.navigate('HomeScreen');
   };
 

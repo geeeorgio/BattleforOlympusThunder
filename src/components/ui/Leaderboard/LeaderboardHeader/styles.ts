@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerText: {
-    fontSize: sp(12),
+    fontSize: sp(14),
     fontFamily: FONTS.UbuntuMedium,
     color: COLORS.white,
     textAlign: 'center',

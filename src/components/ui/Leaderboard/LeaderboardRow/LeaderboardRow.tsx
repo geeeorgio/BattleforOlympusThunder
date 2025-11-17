@@ -18,45 +18,46 @@ const LeaderboardRow = ({ player, place }: LeaderboardRowProps) => {
   const isEmpty = player.score === null;
 
   const displayName = isEmpty ? '—' : player.name;
-
   const displayScore = isEmpty ? '—' : String(player.score);
-
-  const textStyle = isEmpty ? styles.regularPlaceText : styles.placeText;
-
-  const PlaceContent = () => {
-    if (isTopThree) {
-      return (
-        <CustomContainer variant="yellow" extraStyle={styles.placeButton}>
-          <CustomText extraStyle={[styles.topPlaceText, styles.yellowBtnText]}>
-            {place}
-          </CustomText>
-        </CustomContainer>
-      );
-    } else {
-      return (
-        <CustomContainer variant="grey" extraStyle={styles.placeButton}>
-          <CustomText extraStyle={textStyle}>{place}</CustomText>
-        </CustomContainer>
-      );
-    }
-  };
 
   return (
     <View style={styles.rowContainer}>
       <View style={styles.placeColumn}>
-        {isEmpty && !isTopThree ? (
-          <CustomText extraStyle={textStyle}>{place}</CustomText>
+        {isTopThree ? (
+          <CustomContainer variant="yellow" extraStyle={styles.placeButton}>
+            <CustomText
+              extraStyle={[styles.topPlaceText, styles.yellowBtnText]}
+            >
+              {place}
+            </CustomText>
+          </CustomContainer>
         ) : (
-          <PlaceContent />
+          <CustomContainer variant="grey" extraStyle={styles.placeButton}>
+            <CustomText
+              extraStyle={[
+                isEmpty ? styles.regularPlaceText : styles.topPlaceText,
+              ]}
+            >
+              {place}
+            </CustomText>
+          </CustomContainer>
         )}
       </View>
 
       <View style={styles.playersColumn}>
-        <CustomText extraStyle={textStyle}>{displayName}</CustomText>
+        <CustomText
+          extraStyle={isEmpty ? styles.regularPlaceText : styles.topPlaceText}
+        >
+          {displayName}
+        </CustomText>
       </View>
 
       <View style={styles.victoriesColumn}>
-        <CustomText extraStyle={textStyle}>{displayScore}</CustomText>
+        <CustomText
+          extraStyle={isEmpty ? styles.regularPlaceText : styles.topPlaceText}
+        >
+          {displayScore}
+        </CustomText>
       </View>
     </View>
   );

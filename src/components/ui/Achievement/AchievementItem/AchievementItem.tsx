@@ -4,6 +4,7 @@ import { Image, View } from 'react-native';
 import CustomButton from '../../CustomButton/CustomButton';
 import CustomContainer from '../../CustomContainer/CustomContainer';
 import CustomText from '../../CustomText/CustomText';
+import GradientText from '../../GradientText/GradientText';
 
 import { styles } from './styles';
 
@@ -40,7 +41,7 @@ const AchievementItem = ({ achievement }: AchievementItemProps) => {
         start={{ x: 0, y: 0.5 }}
         end={{ x: 1, y: 0.5 }}
       >
-        <CustomText extraStyle={styles.name}>{achievement.name}</CustomText>
+        <GradientText style={styles.name}>{achievement.name}</GradientText>
         <CustomText
           extraStyle={[
             styles.description,

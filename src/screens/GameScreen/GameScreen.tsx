@@ -61,9 +61,7 @@ const GameScreen = () => {
     }
 
     dispatch(resetGameplay());
-
     dispatch(hideQuitModal());
-
     navigation.navigate('HomeScreen');
   };
 

@@ -11,9 +11,11 @@ export const selectLeaderboard = (state: RootState) => {
 export const selectSortedLeaderboard = createSelector(
   [selectLeaderboard],
   (leaderboard) => {
-    return [...leaderboard].sort(
-      (a: LeaderboardPlayer, b: LeaderboardPlayer) =>
-        (b.score ?? 0) - (a.score ?? 0),
-    );
+    return [...leaderboard]
+      .filter((player) => player.score !== null && player.name.trim() !== '')
+      .sort(
+        (a: LeaderboardPlayer, b: LeaderboardPlayer) =>
+          (b.score ?? 0) - (a.score ?? 0),
+      );
   },
 );

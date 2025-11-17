@@ -13,10 +13,12 @@ import {
 import CustomButton from 'src/components/ui/CustomButton/CustomButton';
 import { useAppSelector } from 'src/hooks/toolkit';
 import { selectSortedLeaderboard } from 'src/redux/slices/leaderboard/selectors';
-import { handleShare } from 'src/utils';
+import { handleShare, mockBoard } from 'src/utils';
 
 const LeaderboardScreen = () => {
   const sortedBoard = useAppSelector(selectSortedLeaderboard);
+
+  const displayData = mockBoard(sortedBoard);
 
   const handleSharePress = () => {
     handleShare();
@@ -31,7 +33,7 @@ const LeaderboardScreen = () => {
         end={{ x: 1, y: 0.5 }}
       >
         <FlatList
-          data={sortedBoard}
+          data={displayData}
           renderItem={({ item, index }) => (
             <LeaderboardRow player={item} place={index + 1} />
           )}

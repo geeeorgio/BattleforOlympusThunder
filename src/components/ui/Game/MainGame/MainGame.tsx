@@ -41,7 +41,13 @@ const MainGame = ({ isMainGame = false }: MainGameProps) => {
       attackingPlayerId === 'player_1' ? player2Grid : player1Grid;
     const cell = targetGrid.find((c) => c.id === cellId);
 
-    if (cell?.hasLightning && !isFirstStrikeMade) {
+    if (
+      cell &&
+      !cell.isHit &&
+      !cell.isMiss &&
+      cell.hasLightning &&
+      !isFirstStrikeMade
+    ) {
       dispatch(setFirstStrike(attackingPlayerId));
     }
 

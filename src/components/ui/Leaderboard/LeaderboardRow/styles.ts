@@ -20,7 +20,9 @@ export const styles = StyleSheet.create({
     borderRightColor: COLORS.borderColor,
   },
   placeButton: {
-    width: '100%',
+    width: '90%',
+    padding: wp(4),
+    borderRadius: wp(8),
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -30,18 +32,14 @@ export const styles = StyleSheet.create({
   regularPlaceButton: {
     backgroundColor: COLORS.grey,
   },
-  placeText: {
-    fontSize: sp(14),
-    fontFamily: FONTS.UbuntuRegular,
-    textAlign: 'center',
-  },
   topPlaceText: {
     fontSize: sp(16),
     fontFamily: FONTS.UbuntuMedium,
     textAlign: 'center',
   },
   regularPlaceText: {
-    color: COLORS.white,
+    fontSize: sp(14),
+    fontFamily: FONTS.UbuntuRegular,
     textAlign: 'center',
   },
   playersColumn: {

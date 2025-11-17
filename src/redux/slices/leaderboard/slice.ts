@@ -12,38 +12,7 @@ interface LeaderboardState {
 }
 
 const initialState: LeaderboardState = {
-  leaderboard: [
-    {
-      id: 'empty-1',
-      name: '',
-      score: null,
-    },
-    {
-      id: 'empty-2',
-      name: '',
-      score: null,
-    },
-    {
-      id: 'empty-3',
-      name: '',
-      score: null,
-    },
-    {
-      id: 'empty-4',
-      name: '',
-      score: null,
-    },
-    {
-      id: 'empty-5',
-      name: '',
-      score: null,
-    },
-    {
-      id: 'empty-6',
-      name: '',
-      score: null,
-    },
-  ],
+  leaderboard: [],
 };
 
 const slice = createSlice({

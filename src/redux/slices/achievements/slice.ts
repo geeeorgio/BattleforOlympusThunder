@@ -81,6 +81,11 @@ const slice = createSlice({
       }
     },
 
+    resetFirstStrike: (state) => {
+      state.isFirstStrikeMade = false;
+      state.firstStrikePlayerId = null;
+    },
+
     resetAchievements: () => {
       return { ...initialState };
     },
@@ -91,6 +96,7 @@ export const {
   claimAchievement,
   incrementProgress,
   setFirstStrike,
+  resetFirstStrike,
   resetAchievements,
 } = slice.actions;
 export const achievementsReducer = slice.reducer;
