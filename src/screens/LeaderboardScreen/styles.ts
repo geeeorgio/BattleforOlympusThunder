@@ -14,6 +14,21 @@ export const styles = StyleSheet.create({
     minHeight: '60%',
     maxHeight: '80%',
     overflow: 'hidden',
+    position: 'relative',
+  },
+  verticalDivider: {
+    position: 'absolute',
+    top: '11%',
+    bottom: '3%',
+    width: wp(1.5),
+    backgroundColor: COLORS.borderColor,
+    zIndex: 1,
+  },
+  verticalDivider1: {
+    left: '25%',
+  },
+  verticalDivider2: {
+    left: '75%',
   },
   listContent: {
     width: '100%',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 import { styles } from './styles';
 
@@ -32,6 +32,9 @@ const LeaderboardScreen = () => {
         start={{ x: 0, y: 0.5 }}
         end={{ x: 1, y: 0.5 }}
       >
+        <View style={[styles.verticalDivider, styles.verticalDivider1]} />
+        <View style={[styles.verticalDivider, styles.verticalDivider2]} />
+
         <FlatList
           data={displayData}
           renderItem={({ item, index }) => (

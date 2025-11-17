@@ -16,8 +16,6 @@ export const styles = StyleSheet.create({
     paddingHorizontal: wp(6),
     justifyContent: 'center',
     alignItems: 'center',
-    borderRightWidth: wp(1),
-    borderRightColor: COLORS.borderColor,
   },
   placeButton: {
     width: '90%',
@@ -47,8 +45,6 @@ export const styles = StyleSheet.create({
     flex: 0.7,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRightWidth: wp(1),
-    borderRightColor: COLORS.borderColor,
   },
   victoriesColumn: {
     paddingHorizontal: wp(4),

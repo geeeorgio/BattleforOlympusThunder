@@ -17,8 +17,8 @@ const LeaderboardRow = ({ player, place }: LeaderboardRowProps) => {
   const isTopThree = place <= 3;
   const isEmpty = player.score === null;
 
-  const displayName = isEmpty ? '—' : player.name;
-  const displayScore = isEmpty ? '—' : String(player.score);
+  const displayName = isEmpty ? '——' : player.name;
+  const displayScore = isEmpty ? '——' : String(player.score);
 
   return (
     <View style={styles.rowContainer}>
