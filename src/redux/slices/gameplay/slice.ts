@@ -30,12 +30,12 @@ const initialState: GameplayState = {
   player_1: {
     id: 'player_1',
     name: '',
-    image: ZEUS_IMGS.blue,
+    image: ZEUS_IMGS.vulcanoZeus1,
   },
   player_2: {
     id: 'player_2',
     name: '',
-    image: ZEUS_IMGS.red,
+    image: ZEUS_IMGS.vulcanoZeus2,
   },
   currentPlayer: 'player_1',
   player1Grid: createEmptyGrid(),

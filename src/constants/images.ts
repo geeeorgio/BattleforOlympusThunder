@@ -16,4 +16,6 @@ export const ZEUS_IMGS = {
   onboarding3: require('../assets/images/zeus/zeus3.png'),
   blue: require('../assets/images/zeus/zeusBlue.png'),
   red: require('../assets/images/zeus/zeusRed.png'),
+  vulcanoZeus1: require('../assets/images/zeus/vulcano_zeus_1.png'),
+  vulcanoZeus2: require('../assets/images/zeus/vulcano_zeus_2.png'),
 };

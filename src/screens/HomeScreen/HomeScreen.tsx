@@ -28,11 +28,11 @@ const HomeScreen = () => {
           </View>
           <View style={styles.titleContainer}>
             <CustomText extraStyle={styles.title}>
-              Battle for Olympus Thunder is a thrilling two-player strategy game
+              Thunder Battle for Vulcano is a thrilling two-player strategy game
               where every move unleashes the power of the gods. Take the role of
               Zeus, place your lightning bolts wisely, and predict your
-              opponent’s strikes to dominate the skies of Olympus. Outsmart,
-              outstrike, and prove yourself as the true ruler of thunder!
+              opponent’s strikes to dominate the skies. Outsmart, outstrike, and
+              prove yourself as the true ruler of thunder!
             </CustomText>
           </View>
         </View>

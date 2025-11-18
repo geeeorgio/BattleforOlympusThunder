@@ -96,7 +96,11 @@ const GameResult = ({ winner }: GameResultProps) => {
     <View style={styles.container}>
       <View style={styles.content}>
         <Image
-          source={winner.id === 'player_1' ? ZEUS_IMGS.blue : ZEUS_IMGS.red}
+          source={
+            winner.id === 'player_1'
+              ? ZEUS_IMGS.vulcanoZeus1
+              : ZEUS_IMGS.vulcanoZeus2
+          }
           style={styles.image}
           resizeMode="contain"
         />

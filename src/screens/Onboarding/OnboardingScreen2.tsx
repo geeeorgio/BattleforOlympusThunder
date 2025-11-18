@@ -27,7 +27,7 @@ const OnboardingScreen2 = () => {
       <View style={styles.contentWrapper}>
         <View style={styles.imageWrapper}>
           <Image
-            source={ZEUS_IMGS.onboarding2}
+            source={ZEUS_IMGS.vulcanoZeus1}
             resizeMode="contain"
             style={styles.image}
           />
@@ -35,7 +35,7 @@ const OnboardingScreen2 = () => {
 
         <FrameContainer extraStyle={styles.frameContainer}>
           <GradientText style={styles.title}>
-            Place your lightning bolts on the field of Olympus.
+            Place your lightning bolts on the field of Vulcano.
           </GradientText>
 
           <CustomText extraStyle={styles.description}>

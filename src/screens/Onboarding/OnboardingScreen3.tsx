@@ -26,7 +26,7 @@ const OnboardingScreen3 = () => {
       <View style={styles.contentWrapper}>
         <View style={styles.imageWrapper}>
           <Image
-            source={ZEUS_IMGS.onboarding3}
+            source={ZEUS_IMGS.vulcanoZeus2}
             resizeMode="contain"
             style={styles.image}
           />
@@ -35,7 +35,7 @@ const OnboardingScreen3 = () => {
         <FrameContainer extraStyle={styles.frameContainer}>
           <GradientText style={styles.title}>
             Predict your opponent’s lightning, strike accurately and gain the
-            glory of Zeus!
+            thunder glory!
           </GradientText>
 
           <CustomText extraStyle={styles.description}>
