@@ -79,7 +79,7 @@ android {
 
     namespace "com.battleforolympusthunder"
     defaultConfig {
-        applicationId "com.thunder.battle.forvulcano"
+        applicationId "com.tough.way.tovolkan"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

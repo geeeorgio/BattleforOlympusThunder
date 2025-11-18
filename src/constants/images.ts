@@ -18,4 +18,6 @@ export const ZEUS_IMGS = {
   red: require('../assets/images/zeus/zeusRed.png'),
   vulcanoZeus1: require('../assets/images/zeus/vulcano_zeus_1.png'),
   vulcanoZeus2: require('../assets/images/zeus/vulcano_zeus_2.png'),
+  wayToOlimpZeus1: require('../assets/images/zeus/way_to_olimp1.png'),
+  wayToOlimpZeus2: require('../assets/images/zeus/way_to_olimp2.png'),
 };

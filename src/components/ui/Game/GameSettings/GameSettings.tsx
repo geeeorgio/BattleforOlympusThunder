@@ -51,7 +51,7 @@ const GameSettings = ({
           end={{ x: 1, y: 0.5 }}
         >
           <Image
-            source={ZEUS_IMGS.vulcanoZeus1}
+            source={ZEUS_IMGS.wayToOlimpZeus1}
             resizeMode="contain"
             style={styles.image}
           />
@@ -82,7 +82,7 @@ const GameSettings = ({
           end={{ x: 1, y: 0.5 }}
         >
           <Image
-            source={ZEUS_IMGS.vulcanoZeus2}
+            source={ZEUS_IMGS.wayToOlimpZeus2}
             resizeMode="contain"
             style={styles.image}
           />

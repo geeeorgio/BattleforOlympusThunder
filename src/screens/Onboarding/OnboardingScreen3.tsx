@@ -25,17 +25,17 @@ const OnboardingScreen3 = () => {
     <CustomScreenWrapper extraStyle={styles.screenWrapper}>
       <View style={styles.contentWrapper}>
         <View style={styles.imageWrapper}>
-          <Image
+          {/* <Image
             source={ZEUS_IMGS.vulcanoZeus2}
             resizeMode="contain"
             style={styles.image}
-          />
+          /> */}
         </View>
 
         <FrameContainer extraStyle={styles.frameContainer}>
           <GradientText style={styles.title}>
             Predict your opponent’s lightning, strike accurately and gain the
-            thunder glory!
+            glory of Olimp Volkan!
           </GradientText>
 
           <CustomText extraStyle={styles.description}>

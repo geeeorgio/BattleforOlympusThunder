@@ -26,16 +26,16 @@ const OnboardingScreen1 = () => {
     <CustomScreenWrapper extraStyle={styles.screenWrapper}>
       <View style={styles.contentWrapper}>
         <View style={styles.imageWrapper}>
-          <Image
+          {/* <Image
             source={ZEUS_IMGS.vulcanoZeus2}
             resizeMode="contain"
             style={styles.image}
-          />
+          /> */}
         </View>
 
         <FrameContainer extraStyle={styles.frameContainer}>
           <GradientText style={styles.title}>
-            Welcome to the Thunder Battle for Vulcano!
+            Welcome to the Tough Way To Olimp Volkan!
           </GradientText>
 
           <CustomText extraStyle={styles.description}>

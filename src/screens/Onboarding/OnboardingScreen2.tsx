@@ -26,16 +26,16 @@ const OnboardingScreen2 = () => {
     <CustomScreenWrapper extraStyle={styles.screenWrapper}>
       <View style={styles.contentWrapper}>
         <View style={styles.imageWrapper}>
-          <Image
+          {/* <Image
             source={ZEUS_IMGS.vulcanoZeus1}
             resizeMode="contain"
             style={styles.image}
-          />
+          /> */}
         </View>
 
         <FrameContainer extraStyle={styles.frameContainer}>
           <GradientText style={styles.title}>
-            Place your lightning bolts on the field of Vulcano.
+            Place your lightning bolts on the field of Olimp Volkan.
           </GradientText>
 
           <CustomText extraStyle={styles.description}>
